@@ -91,7 +91,9 @@ phpmyadmin:
 
 4. Run Docker Containers
 
+```
 $ sudo docker compose up -d
+```
 
 > Note: The FastAPI app may initially fail to connect to MySQL. This is normal because the MySQL container may still be initializing.
 
