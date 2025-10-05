@@ -27,6 +27,7 @@ $ sudo nano /etc/netplan/50-cloud-init.yaml
 
 3. Example Wi-Fi configuration:
 
+```
 network:
     version: 2
     wifis:
@@ -36,6 +37,7 @@ network:
                 "TONX":
                     password: "late1978"
             dhcp4: true
+```
 
 > Make sure to include quotes "" around SSID and password if they contain special characters.
 
@@ -55,6 +57,7 @@ $ ip a  # Verify that the Raspberry Pi has an IP address
 
 Example phpmyadmin service for ARM64 Raspberry Pi:
 
+```
 phpmyadmin:
   image: phpmyadmin:5.2-apache
   platform: linux/arm64
@@ -72,6 +75,7 @@ phpmyadmin:
     - "8080:80"
   networks:
     - house-demo-networks
+```
 
 ---
 
