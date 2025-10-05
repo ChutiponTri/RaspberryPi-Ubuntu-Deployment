@@ -19,11 +19,15 @@ Using LAN
 Using Wi-Fi
 1. Check your netplan configuration files:
 
+```
 $ ls /etc/netplan/
+```
 
 2. Edit the netplan YAML file (replace 50-cloud-init.yaml with your file if different):
 
+```
 $ sudo nano /etc/netplan/50-cloud-init.yaml
+```
 
 3. Example Wi-Fi configuration:
 
@@ -43,9 +47,15 @@ network:
 
 4. Apply the configuration:
 
+```
 $ sudo netplan apply
+```
+```
 $ sudo netplan --debug apply
+```
+```
 $ ip a  # Verify that the Raspberry Pi has an IP address
+```
 
 ---
 
@@ -91,13 +101,17 @@ $ sudo docker compose up -d
 
 1. Access the MySQL container:
 
+```
 $ sudo docker exec -it house_database mysql -uroot -p
 # Enter root password
+```
 
 2. Create a user and grant privileges:
 
+```
 GRANT ALL PRIVILEGES ON mydb.* TO 'userton'@'%' IDENTIFIED BY 'ton123';
 FLUSH PRIVILEGES;
+```
 
 3. After flushing privileges, your FastAPI app should be able to connect.
 
