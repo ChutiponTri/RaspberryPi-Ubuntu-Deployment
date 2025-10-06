@@ -57,6 +57,34 @@ $ sudo netplan --debug apply
 $ ip a  # Verify that the Raspberry Pi has an IP address
 ```
 
+In case that WiFi has no password but require html login, we could do
+
+```
+network:
+    version: 2
+    wifis:
+        wlp3s0:
+            optional: true
+            access-points:
+                "ENGR_Wifi": {}
+            dhcp4: true
+```
+```
+$ sudo netplan apply
+```
+
+Then command 
+
+```
+curl -v http://1.1.1.1        # Your network login ip
+```
+
+In this case got return of login route at http://192.0.2.1/login.html, so I command to login via
+
+```
+curl -d "username=USERNAME&password=PASSWORD" http://192.0.2.1/login.html
+```
+
 ---
 
 3. Setup Development Environment
