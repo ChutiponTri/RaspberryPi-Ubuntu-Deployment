@@ -57,7 +57,7 @@ $ sudo netplan --debug apply
 $ ip a  # Verify that the Raspberry Pi has an IP address
 ```
 
-In case that WiFi has no password but require html login, we could do
+5. In case that WiFi has no password but require html login, we could do
 
 ```
 network:
