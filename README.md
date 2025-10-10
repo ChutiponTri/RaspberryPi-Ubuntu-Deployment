@@ -34,6 +34,11 @@ $ sudo nano /etc/netplan/50-cloud-init.yaml
 ```
 network:
     version: 2
+    renderer: networkd
+    ethernets:
+        eth0:
+          dhcp4: true
+          optional: true
     wifis:
         wlp3s0:
             optional: true
@@ -62,6 +67,11 @@ $ ip a  # Verify that the Raspberry Pi has an IP address
 ```
 network:
     version: 2
+    renderer: networkd
+    ethernets:
+        eth0:
+          dhcp4: true
+          optional: true
     wifis:
         wlp3s0:
             optional: true
