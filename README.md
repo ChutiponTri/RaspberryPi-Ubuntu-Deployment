@@ -188,6 +188,7 @@ will see authorized_key, KEY-NAME, KEY-NAME.pub
 more ~/.ssh/KEY-NAME.pub
 ```
 will see ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDqC99ROz2zWRXa7pOsZbFirajxWk3lIBNaM79taRngl C-NAME
+
 copy it and put in
 
 ```
