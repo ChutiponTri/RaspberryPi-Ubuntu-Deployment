@@ -4,14 +4,14 @@ This guide explains how to deploy a full-stack project on a Raspberry Pi running
 
 ---
 
-1. Install Ubuntu Server on Raspberry Pi
+### 1. Install Ubuntu Server on Raspberry Pi
 
 - Download the Raspberry Pi Ubuntu Server image: https://ubuntu.com/download/raspberry-pi
 - Follow the installation instructions and set up your user/password.
 
 ---
 
-2. Connect Raspberry Pi to the Internet
+### 2. Connect Raspberry Pi to the Internet
 
 Using LAN
 - Simply connect the Raspberry Pi to your router via Ethernet.
@@ -97,7 +97,7 @@ curl -d "username=USERNAME&password=PASSWORD" http://192.0.2.1/login.html
 
 ---
 
-3. Setup Development Environment
+### 3. Setup Development Environment
 
 - Use VSCode Remote Explorer to SSH into your Raspberry Pi for easier coding.
 - Copy your project files from your computer to the Raspberry Pi.
@@ -127,7 +127,7 @@ phpmyadmin:
 
 ---
 
-4. Run Docker Containers
+### 4. Run Docker Containers
 
 ```
 $ sudo docker compose up -d
@@ -137,7 +137,7 @@ $ sudo docker compose up -d
 
 ---
 
-5. Configure MySQL User Privileges
+### 5. Configure MySQL User Privileges
 
 1. Access the MySQL container:
 
@@ -157,7 +157,7 @@ FLUSH PRIVILEGES;
 
 ---
 
-6. Troubleshooting Notes
+### 6. Troubleshooting Notes
 
 - Root user: Avoid using root for your app connections; create a dedicated user instead.
 - Container restart: If MySQL was initialized without a password, restart the container and flush privileges.
@@ -167,13 +167,13 @@ FLUSH PRIVILEGES;
 
 ---
 
-7. Remote with Cloudflared
+### 7. Remote with Cloudflared
 
 - Setup tunnel on Cloudflare Zero Trust as ssh://IP_ADRESS:PORT (In this case remote to Raspberry Pi at port 22)
 - Setup access -> Add Self Hosted Application, make sure the application name is the same as tunnel name -> Set browser rendering option as ssh -> Add policy then change rule to email and input your email -> Then add the policy to application -> These are all require setup in cloudflared
 - Then go into the link of the tunnel -> Login with username and password -> then commmand
 
-1. Create Cloudflare Tunnel
+#### 1. Create Cloudflare Tunnel
 
 Set up a tunnel in **Cloudflare Zero Trust Dashboard** with the following service configuration:
 
@@ -183,7 +183,7 @@ ssh://<IP_ADDRESS>:<PORT>
 
 > 💡 Example: `ssh://192.168.1.10:22` (for Raspberry Pi SSH)
 
-2. Configure Access Application
+#### 2. Configure Access Application
 
 1. Go to **Access → Applications → Add an Application**  
 2. Choose **Self-Hosted Application**  
@@ -194,7 +194,7 @@ ssh://<IP_ADDRESS>:<PORT>
    - Add your email address (e.g. `you@example.com`)
 6. Attach the new policy to your application
 
-3. Access the Tunnel
+#### 3. Access the Tunnel
 
 1. Open the tunnel link shown in your Cloudflare dashboard  
 2. Log in using your configured email authentication  
@@ -216,7 +216,7 @@ ssh -o ProxyCommand="cloudflared access ssh --hostname %h" USER@ssh.YOUR-DOMAIN-
 ```
 
 
-More On Private Keys
+#### 4. More On Private Keys
 
 ```bash
 ssh-keygen -t ed25519 -C "C-NAME" 
@@ -248,7 +248,7 @@ more ~/.ssh/KEY-NAME
 
 ---
 
-8. References
+### 8. References
 
 - Ubuntu Wi-Fi Configuration from Command Line: https://linuxconfig.org/ubuntu-22-04-connect-to-wifi-from-command-line
 - VSCode Remote SSH: https://code.visualstudio.com/docs/remote/ssh
