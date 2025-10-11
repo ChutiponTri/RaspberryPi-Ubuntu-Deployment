@@ -173,31 +173,76 @@ FLUSH PRIVILEGES;
 - Setup access -> Add Self Hosted Application, make sure the application name is the same as tunnel name -> Set browser rendering option as ssh -> Add policy then change rule to email and input your email -> Then add the policy to application -> These are all require setup in cloudflared
 - Then go into the link of the tunnel -> Login with username and password -> then commmand
 
+1. Create Cloudflare Tunnel
+
+Set up a tunnel in **Cloudflare Zero Trust Dashboard** with the following service configuration:
+
 ```
+ssh://<IP_ADDRESS>:<PORT>
+```
+
+> 💡 Example: `ssh://192.168.1.10:22` (for Raspberry Pi SSH)
+
+2. Configure Access Application
+
+1. Go to **Access → Applications → Add an Application**  
+2. Choose **Self-Hosted Application**  
+3. **Application Name** — must match your tunnel name  
+4. Under **Browser Rendering**, set the option to **SSH**  
+5. Create an **Access Policy**:
+   - Change **Rule** type to `Email`
+   - Add your email address (e.g. `you@example.com`)
+6. Attach the new policy to your application
+
+3. Access the Tunnel
+
+1. Open the tunnel link shown in your Cloudflare dashboard  
+2. Log in using your configured email authentication  
+3. Once authenticated, connect via SSH in your terminal:
+
+```bash
+ssh user@<your-tunnel-hostname>
+```
+Or, if using cloudflared locally: Verify the device with command 
+
+```bash
+cloudflared access ssh --hostname ssh.YOUR-DOMAIN-NAME.com
+```
+
+Remote Access with command
+bash
+```
+ssh -o ProxyCommand="cloudflared access ssh --hostname %h" USER@ssh.YOUR-DOMAIN-NAME.com
+```
+
+
+More On Private Keys
+
+```bash
 ssh-keygen -t ed25519 -C "C-NAME" 
 ```
 save the key file in the same directory in my case /home/pi/.ssh/KEY-NAME 
 
-```
+```bash
 ls ~/.ssh
 ```
 
 will see authorized_key, KEY-NAME, KEY-NAME.pub
 
-```
+```bash
 more ~/.ssh/KEY-NAME.pub
 ```
 will see ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDqC99ROz2zWRXa7pOsZbFirajxWk3lIBNaM79taRngl C-NAME
 
 copy it and put in
 
-```
+```bash
 sudo nano authorized_keys
 ```
 
 Finally command to get private key
 
-```
+```bash
 more ~/.ssh/KEY-NAME
 ```
 
