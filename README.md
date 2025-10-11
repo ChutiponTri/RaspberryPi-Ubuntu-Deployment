@@ -197,13 +197,8 @@ ssh://<IP_ADDRESS>:<PORT>
 #### 3. Access the Tunnel
 
 1. Open the tunnel link shown in your Cloudflare dashboard  
-2. Log in using your configured email authentication  
-3. Once authenticated, connect via SSH in your terminal:
-
-```bash
-ssh user@<your-tunnel-hostname>
-```
-Or, if using cloudflared locally: Verify the device with command 
+2. Log in using your username and password
+3. If using cloudflared locally: Verify the device with command 
 
 ```bash
 cloudflared access ssh --hostname ssh.YOUR-DOMAIN-NAME.com
@@ -214,7 +209,6 @@ bash
 ```
 ssh -o ProxyCommand="cloudflared access ssh --hostname %h" USER@ssh.YOUR-DOMAIN-NAME.com
 ```
-
 
 #### 4. More On Private Keys
 
