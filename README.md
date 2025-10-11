@@ -203,7 +203,7 @@ more ~/.ssh/KEY-NAME
 
 ---
 
-7. References
+8. References
 
 - Ubuntu Wi-Fi Configuration from Command Line: https://linuxconfig.org/ubuntu-22-04-connect-to-wifi-from-command-line
 - VSCode Remote SSH: https://code.visualstudio.com/docs/remote/ssh
