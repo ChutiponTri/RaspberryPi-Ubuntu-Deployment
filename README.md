@@ -167,6 +167,41 @@ FLUSH PRIVILEGES;
 
 ---
 
+7. Remote with Cloudflared
+
+- Setup tunnel on Cloudflare Zero Trust as ssh://IP_ADRESS:PORT (In this case remote to Raspberry Pi at port 22)
+- Setup access -> Add Self Hosted Application, make sure the application name is the same as tunnel name -> Set browser rendering option as ssh -> Add policy then change rule to email and input your email -> Then add the policy to application -> These are all require setup in cloudflared
+- Then go into the link of the tunnel -> Login with username and password -> then commmand
+
+```
+ssh-keygen -t ed25519 -C "C-NAME" 
+```
+save the key file in the same directory in my case /home/pi/.ssh/KEY-NAME 
+
+```
+ls ~/.ssh
+```
+
+will see authorized_key, KEY-NAME, KEY-NAME.pub
+
+```
+more ~/.ssh/KEY-NAME.pub
+```
+will see ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDqC99ROz2zWRXa7pOsZbFirajxWk3lIBNaM79taRngl C-NAME
+copy it and put in
+
+```
+sudo nano authorized_keys
+```
+
+Finally command to get private key
+
+```
+more ~/.ssh/KEY-NAME
+```
+
+---
+
 7. References
 
 - Ubuntu Wi-Fi Configuration from Command Line: https://linuxconfig.org/ubuntu-22-04-connect-to-wifi-from-command-line
